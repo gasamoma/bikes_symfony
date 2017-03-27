@@ -1,0 +1,51 @@
+{% extends "::base.html.twig" %}
+{% block fos_user_content %}
+    <div class="container">
+        {% for flash_message in app.session.flashbag.get('notice') %}
+            <div class="flash-notice">
+                <h2>{{ flash_message }}</h2>
+            </div>
+        {% endfor %}
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="row">
+                    {% for media in medias %}
+                        <div class="col-sm-6 col-lg-4 col-md-6">
+                            <div class="thumbnail" style="background: black">
+                                <a data-toggle="modal" data-target="#media_modal_{{ media.id }}">
+
+                                    {% if media.image.type=="img" %}
+                                        <img src="{{ media.image.url }}" alt="" style="min-height:200px;height:200px;">
+                                    {% else %}
+                                        {% set foo = media.image.url|split('/embed/') %}
+                                        <img src="https://i.ytimg.com/vi/{{ foo[1] }}/hqdefault.jpg" alt="" style="min-height:200px;height:200px;">
+                                    {% endif %}
+                                </a>
+                            </div>
+                        </div>
+                        <div class="modal fade" id="media_modal_{{ media.id }}" tabindex="-1" role="dialog" aria-labelledby="videoModal" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-body">
+                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                        <div>
+                                            {% if media.image.type=="img" %}
+                                                <a target="_blank" href="{{ media.image.url }}">
+                                                    <img src="{{ media.image.url }}" alt="" width="100%" height="100%">
+                                                </a>
+                                            {% else %}
+                                                <iframe width="560" height="315" src="{{ media.image.url }}" frameborder="0" allowfullscreen></iframe>
+                                            {% endif %}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock fos_user_content %}

@@ -1,0 +1,83 @@
+{% extends "::base.html.twig" %}
+{% block fos_user_content %}
+    <div class="container">
+        {% for flash_message in app.session.flashbag.get('notice') %}
+            <div class="flash-notice">
+                <h2>{{ flash_message }}</h2>
+            </div>
+        {% endfor %}
+
+        <div class="row">
+
+            <div class="col-md-3">
+                <p class="lead">A la venta Colombia</p>
+                <div class="list-group">
+                    {% for category in categories %}
+                        <a href="{{ path('homepage', {'cat':category.id}) }}" class="list-group-item {% if cat==category.id %}active{% endif %}">{{ category.name }}</a>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <div class="col-md-9">
+                <div class="row carousel-holder">
+
+                    <div class="col-md-12">
+                        <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                            <ol class="carousel-indicators">
+                                {% set i=promImgs|length %}
+                                {% for j in 0..i %}
+                                    <li data-target="#carousel-example-generic" data-slide-to="{{ j }}" {% if j==0 %}class="active">{% endif %}</li>
+                                {% endfor %}
+                            </ol>
+                            <div class="carousel-inner">
+                                {% set flag=0 %}
+                                {% for media in promImgs  %}
+                                    <div class="item {% if flag==0 %}active{% set flag=1 %}{% endif %}">
+                                        <img class="slide-image" src="{{ media.image.url }}" alt="">
+                                    </div>
+                                {% endfor %}
+                            </div>
+                            <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
+                                <span class="glyphicon glyphicon-chevron-left"></span>
+                            </a>
+                            <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
+                                <span class="glyphicon glyphicon-chevron-right"></span>
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="row">
+                    {% for product in products %}
+                        <div class="col-sm-6 col-lg-4 col-md-6">
+                            <div class="thumbnail">
+                                <a href="{{ path('view_product', {'id':product.id  } )}}">
+                                    <img src="{{ product.headingMedia.url }}" alt="">
+                                </a>
+                                <div class="caption">
+                                    <h4 class="pull-right"> ${{ product.price }}</h4>
+                                    <h4><a href="{{ path('view_product', {'id':product.id  } )}}">{{ product.name }}</a> </h4>
+                                    <p>{{ product.shortDesc }} </p>
+                                </div>
+                                <div class="ratings">
+                                    <p class="pull-right">4 reviews</p>
+                                    <p>
+                                        {% for i in 0..product.score-1 %}
+                                            <span class="glyphicon glyphicon-star"></span>
+                                        {% endfor %}
+                                        {% if product.score!=5 %}
+                                            {% for i in 0.. 4-product.score%}
+                                                <span class="glyphicon glyphicon-star-empty"></span>
+                                            {% endfor %}
+                                        {% endif %}
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock fos_user_content %}

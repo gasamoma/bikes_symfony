@@ -1,0 +1,28 @@
+homepage:
+    path:     /{cat}
+    defaults: { _controller: EBikeBundle:Default:index , cat : -1}
+contact:
+    path:     /contact/
+    defaults: { _controller: EBikeBundle:Default:contact }
+terms_conditions:
+    path:     /terms/conditions
+    defaults: { _controller: EBikeBundle:Default:termsAndConditions }
+media:
+    path:     /media/
+    defaults: { _controller: EBikeBundle:Default:media }
+show_cart:
+    path:     /cart/
+    defaults: { _controller: EBikeBundle:Product:showCart }
+remove_cart:
+    path:     /cart/remove/{idProd}
+    defaults: { _controller: EBikeBundle:Product:removeProduct }
+checkout_cart:
+    path:     /cart/checkout/
+    defaults: { _controller: EBikeBundle:Product:checkout }
+view_product:
+    path:     /product/{id}
+    defaults: { _controller: EBikeBundle:Product:showProduct , id : -1}
+
+add_product:
+    path:     /product/add/{idProd}
+    defaults: { _controller: EBikeBundle:Product:addProduct , idProd : -1}

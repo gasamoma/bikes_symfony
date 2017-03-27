@@ -1,0 +1,36 @@
+# Learn more about services, parameters and containers at
+# http://symfony.com/doc/current/book/service_container.html
+parameters:
+#    parameter_name: value
+
+services:
+    admin.category:
+        class: EBikeBundle\Admin\CategoryAdmin
+        arguments: [~, EBikeBundle\Entity\Category, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: Categoría }
+    admin.product:
+        class: EBikeBundle\Admin\ProductAdmin
+        arguments: [~, EBikeBundle\Entity\Product, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: Producto }
+    admin.media_home:
+        class: EBikeBundle\Admin\MediaHomeAdmin
+        arguments: [~, EBikeBundle\Entity\MediaHome, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: Media }
+    admin.review:
+        class: EBikeBundle\Admin\ReviewAdmin
+        arguments: [~, EBikeBundle\Entity\Review, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: Reseña }
+    admin.prom_img:
+        class: EBikeBundle\Admin\PromImgAdmin
+        arguments: [~, EBikeBundle\Entity\PromImg, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: Imagenes Promocionales }
+    admin.medias:
+        class: EBikeBundle\Admin\MediasAdmin
+        arguments: [~, EBikeBundle\Entity\Media, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: Contenidos Visuales }

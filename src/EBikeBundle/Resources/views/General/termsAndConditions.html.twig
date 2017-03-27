@@ -1,0 +1,86 @@
+{% extends "::base.html.twig" %}
+{% block fos_user_content %}
+    <div class="container">
+        {% for flash_message in app.session.flashbag.get('notice') %}
+            <div class="flash-notice">
+                <h2>{{ flash_message }}</h2>
+            </div>
+        {% endfor %}
+
+        <div class="row">
+
+            <div class="col-md-3">
+                <p class="lead">A la venta Colombia</p>
+                <div class="list-group">
+                    {% for category in categories %}
+                        <a href="{{ path('homepage', {'cat':category.id}) }}" class="list-group-item">{{ category.name }}</a>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <div class="col-md-9">
+                <div class="thumbnail">
+                    <div class="text-center">
+                        <h1>
+                            <p>Términos y condiciones:</p>
+                            <p>Para ver el archivo acceder al siguiente link:<a href="https://es.hightail.com/e?phi_action=app/orchestrateDownload&batch_id=cUJYTkF0dENlM1N4djlVag">Términos y Condiciones</a> </p>
+                        </h1>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-md-9">
+                <div class="thumbnail">
+                <p><h3>Términos y condiciones:</h3></p>
+                <p>
+                    <h3>CONDICIONES DE GARANTÍA</h3>
+
+
+                    ANTORCHA INGENIERIA CIA LTDA, garantiza que los productos que representa, ensambla, importa,  fabrica y comercializa están libres de defectos, en cuanto a materiales y proceso de fabricación se refiere, durante los periodos que se estipulan para cada producto. Esta garantía está limitada de forma expresa al propietario original que adquiere el equipo directamente de ANTORCHA INGENIERIA CIA LTDA.
+
+                    Para mantener esta garantía limitada, el producto debe utilizarse, calibrarse y mantenerse según el manual de funcionamiento y mantenimiento suministrado con él o disponible en la página de internet www.antorchaingenieria.com . Cualquier abuso, daño mecánico, alteración o reparaciones que no se realicen según el manual de funcionamiento y mantenimiento anulan la garantía limitada estándar de ANTORCHA INGENIERIA CIA LTDA.
+
+                    Los productos suministrados por ANTORCHA INGENIERIA CIA LTDA se consideran peligrosos y la instalación debe realizarse por personal experto, capacitado y autorizado por la entidad reguladora pertinente
+
+                    La obligación de ANTORCHA INGENIERIA CIA LTDA bajo esta garantía limitada se restringe a la reparación o sustitución de componentes que el centro de servicio técnico de ANTORCHA INGENIERIA CIA LTDA considere defectuosos según el ámbito de esta garantía limitada estándar. Si desea saber si la garantía cubriría la reparación o sustitución de su producto, deberá devolverlo a ANTORCHA INGENIERIA CIA LTDA, con gastos de envío y transportes pagados por adelantado. Si va a devolver el producto a ANTORCHA INGENIERIA CIA LTDA , es preciso obtener un número de autorización de devolución de ANTORCHA INGENIERIA CIA LTDA  antes del envío.
+
+                    La garantía limitada estándar no cubre ninguno de los costos de envío o transporte a las instalaciones de ANTORCHA INGENIERIA CIA LTDA en la ciudad de Bogotá, ni tampoco el costo de envío o transporte para retornar la mercancía a las instalaciones del cliente.
+
+                    Esta garantía limitada sustituye expresamente a todas las representaciones, explícitas o implícitas, incluida, pero sin limitarse a ella, la garantía de adecuación para un propósito particular. ANTORCHA INGENIERIA CIA LTDA no será responsable de pérdidas, daños a terceros, accidentes o daños de ningún tipo relacionados con el uso de sus productos o al fallo en el correcto funcionamiento de éstos.
+
+                    En la medida que este permitido por la ley, ANTORCHA INGENIERIA CIA LTDA se reserva el dominio de las mercancías hasta que el importe generado a causa de mejoras, mantenimientos u otros procedimientos no contemplados en la garantía limitada estándar.
+
+                    Los accesorios con mecanismos mecánicos no deben instalarse  con trabas químicas, en los casos que la mercancía sea revisada y se detecte el producto químico, esta perderá toda garantía.
+
+                    ANTORCHA INGENIERIA CIA LTDA, no cubre daños por casos fortuitos como condiciones climáticas: Inundaciones, rayos, incendios, movimiento sísmico, sobre presiones, etc. Tampoco cubre los daños por sobre cargas, mala manipulación, instalación por personal no capacidad y certificado. La garantía no cubre los daños ocasionados por el transportador.
+
+                    Para el caso específico de las mangueras que contengan gas en estado líquido, TODAS deberán estar protegidas con sendas válvulas de seguridad (alivio hidrostático), taradas a la máxima presión de operación de la manguera. Para tramitar la garantía limitada estándar de ANTORCHA INGENIERIA CIA LTDA es necesario por parte comprador que adjunte un  registro fotográfico del sistema que falló antes de ser desmontada la manguera.
+
+                    Si se encuentran los sellos de garantía limitada estándar rotos o manipulados de ANTORCHA INGENIERIA CIA LTDA la garantía se anula.
+
+                    En el caso de requerir el recambio o piezas que se requieran importar. El cliente acepta esperar el tiempo necesario para la importación, nacionalización y manipulación del respectivo producto
+
+                    En el caso de las baterías tienen una garantía de 6 meses si es instalada en sistema de ANTORCHA INGENIERIA CIA LTDA. Dicha garantía es anulada en los casos que los sistemas no sean instalados o manipulados por personal externo a la empresa o que no halla sido capacitado por ANTORCHA INGENIERÍA CIA LTDA. La garantía no cubre corto circuito, daños por conexiones externas, daños por golpes daños sulfatación, daños por inmersión en agua, daños por intento de robo, o cualquier otro tipo de daño que no sea responsabilidad de la fabricación del equipo.
+
+                    La garantía es anulada en el caso de corto circuito, apertura de los equipos, sellos y marcas rotos, instalación en equipos cuyo consumo supere las especificaciones del equipo. En el caso de las baterías de litio y plomo los motores no pueden ser superiores a 350W y 36V para baterías de 10 amperios. La instalación de las baterías en motores externos a los suministrados por ANTORCHA INGENIERIA CIA LTDA es responsabilidad del comprador y limita la garantía de la batería.
+
+                    Los motores de ANTORCHA INGENIERIA CIA LTDA, no pueden someterse a un voltaje distinto al indicado y en caso de superarlo o no alcanzarlo será nula la garantía tanto del motor como de todas las partes eléctricas que componen el motor. Tambin será anulada en el caso de corto circuito, manipulación no autorizada de cables, malas conexiones, recalentamiento por funcionamiento constante forzado.
+
+                    La carga de las baterías se debe hacer con el cargador suministrado específicamente. El uso de cualquier otro tipo de cargador el cual no sea suministrado por ANTORCHA INGENIERIA CIA LTDA podrá afectar la batería y anulará inmediatamente la garantía de la batería.
+
+
+
+
+
+
+
+                <h3>JULIAN MONTERO
+                    Director Administrativo</h3>
+                </p>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+{% endblock fos_user_content %}

@@ -1,0 +1,37 @@
+{% extends "::base.html.twig" %}
+{% block fos_user_content %}
+    <div class="container">
+        {% for flash_message in app.session.flashbag.get('notice') %}
+            <div class="flash-notice">
+                <h2>{{ flash_message }}</h2>
+            </div>
+        {% endfor %}
+
+        <div class="row">
+
+            <div class="col-md-3">
+                <p class="lead">A la venta Colombia</p>
+                <div class="list-group">
+                    {% for category in categories %}
+                        <a href="{{ path('homepage', {'cat':category.id}) }}" class="list-group-item">{{ category.name }}</a>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <div class="col-md-9">
+                <div class="thumbnail">
+                    <div class="text-center">
+                        <h1>
+                            <p>Contactanos:</p>
+                            <p>Cell:3187825796 <div class="alert alert-success" role="alert">(Whatsapp disponible)</div></p>
+                            <p>Tel:(1)(6005353) (Lunes a Viernes 8 am a 6 pm Sabados 8 am 11:30 am)</p>
+                            <p>Visitanos en : Carrera 20 # 133-38 (Lunes a Viernes 8 am a 6 pm Sabados 8 am 11:30 am)</p>
+                            <p>Email: juliansmm@gmail.com antorcha.ing@gmail.com </p>
+                        </h1>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+{% endblock fos_user_content %}

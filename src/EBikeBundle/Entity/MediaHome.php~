@@ -1,0 +1,126 @@
+<?php
+
+namespace EBikeBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * MediaHome
+ *
+ * @ORM\Table(name="media_home")
+ * @ORM\Entity(repositoryClass="EBikeBundle\Repository\MediaHomeRepository")
+ */
+class MediaHome
+{
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="url", type="string", length=500)
+     */
+    private $url;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="type", type="string", length=20)
+     */
+    private $type;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Product", inversedBy="medias")
+     * @ORM\JoinColumn(name="product_id_product", referencedColumnName="id", nullable=true, onDelete="CASCADE")
+     */
+    private $productProduct;
+
+
+    /**
+     * Get id
+     *
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set url
+     *
+     * @param string $url
+     *
+     * @return MediaHome
+     */
+    public function setUrl($url)
+    {
+        $this->url = $url;
+
+        return $this;
+    }
+
+    /**
+     * Get url
+     *
+     * @return string
+     */
+    public function getUrl()
+    {
+        return $this->url;
+    }
+
+    /**
+     * Set type
+     *
+     * @param string $type
+     *
+     * @return MediaHome
+     */
+    public function setType($type)
+    {
+        $this->type = $type;
+
+        return $this;
+    }
+
+    /**
+     * Get type
+     *
+     * @return string
+     */
+    public function getType()
+    {
+        return $this->type;
+    }
+
+    /**
+     * Set productProduct
+     *
+     * @param \EBikeBundle\Entity\Product $productProduct
+     *
+     * @return MediaHome
+     */
+    public function setProductProduct(\EBikeBundle\Entity\Product $productProduct = null)
+    {
+        $this->productProduct = $productProduct;
+
+        return $this;
+    }
+
+    /**
+     * Get productProduct
+     *
+     * @return \EBikeBundle\Entity\Product
+     */
+    public function getProductProduct()
+    {
+        return $this->productProduct;
+    }
+}
